@@ -11,11 +11,11 @@ Author Email: contact@stephenharris.info
 Contributors: Franz Josef Kaiser <wecodemore@gmail.com>, Ryan Urban <ryan@fringewebdevelopment.com>
 License:      GPLv3
 License URI:  http://www.gnu.org/licenses/gpl.txt
- 
+
 	Copyright 2013 Stephen Harris (contact@stephenharris.info)
 
 	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License, version 2, as 
+	it under the terms of the GNU General Public License, version 2, as
 	published by the Free Software Foundation.
 
 	This program is distributed in the hope that it will be useful,
@@ -26,7 +26,7 @@ License URI:  http://www.gnu.org/licenses/gpl.txt
 	You should have received a copy of the GNU General Public License
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-	
+
  */
 
 // Load at the default priority of 10
@@ -76,7 +76,7 @@ class Post_Type_Archive_Links {
 	 */
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'add_meta_box' ) );
-		
+
 		add_action( 'admin_head-nav-menus.php', array( $this, 'setup_admin_hooks' ) );
 
 		add_filter( 'wp_setup_nav_menu_item',  array( $this, 'setup_archive_item' ) );
@@ -84,7 +84,7 @@ class Post_Type_Archive_Links {
 		add_filter( 'wp_nav_menu_objects', array( $this, 'maybe_make_current' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'metabox_script' ) );
-		
+
 		add_action( "wp_ajax_" . $this->nonce, array( $this, 'ajax_add_post_type' ) );
 
 	}
@@ -96,7 +96,7 @@ class Post_Type_Archive_Links {
 	 * @return void
 	 */
 	public function setup_admin_hooks() {
-		
+
 		add_action( 'admin_enqueue_scripts', array( $this, 'metabox_script' ) );
 	}
 
@@ -180,11 +180,11 @@ class Post_Type_Archive_Links {
 		// 'Add to Menu' button
 		$html .= '<p class="button-controls"><span class="add-to-menu">';
 		$html .= '<input type="submit"'. disabled( $nav_menu_selected_id, 0 ) .' class="button-secondary
-			  submit-add-to-menu right" value="'. esc_attr( 'Add to Menu' ) .'" 
+			  submit-add-to-menu right" value="'. esc_attr( 'Add to Menu' ) .'"
 			  name="add-post-type-menu-item" id="submit-post-type-archives" />';
 		$html .= '<span class="spinner"></span>';
 		$html .= '</span></p>';
-		
+
 		print $html;
 	}
 
